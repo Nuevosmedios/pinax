@@ -2,7 +2,7 @@
 import gdata.contacts.service
 
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, get_host
+from django.http import HttpResponseRedirect#, get_host
 from django.utils.html import escape
 
 
@@ -16,7 +16,7 @@ def get_url_host(request):
         protocol = "https"
     else:
         protocol = "http"
-    host = escape(get_host(request))
+    host = escape(request.get_host())
     return "%s://%s" % (protocol, host)
 
 

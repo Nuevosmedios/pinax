@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
-from django.http import Http404, HttpResponseRedirect, get_host
+from django.http import Http404, HttpResponseRedirect#, get_host
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -164,7 +164,7 @@ def details(request, id, template_name="photos/details.html"):
     photo_url = photo.get_display_url()
     
     title = photo.title
-    host = "http://%s" % get_host(request)
+    host = "http://%s" % request.get_host()
     
     if photo.member == request.user:
         is_me = True
